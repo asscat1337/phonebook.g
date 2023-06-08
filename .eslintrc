@@ -1,0 +1,25 @@
+{
+    "env": {
+        "node":true,
+        "es6": true
+
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project":"./tsconfig.json"
+    },
+    "extends": [
+        "airbnb-base",
+        "airbnb-typescript/base",
+        "eslint:recommended",
+        "plugin:@typescript-eslint",
+        "plugin:@typescript-eslint/parser",
+        "plugin:@typescript-eslint/eslint-plugin",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint"
+    ]
+}
