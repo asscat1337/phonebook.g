@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mongodb:
+    build: ./src/mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'root'
+      MONGO_REPLICA_PORT: '27018'
+      MONGO_REPLICA_HOST: 'localhost'
+    ports:
+      - '27018:27018'  

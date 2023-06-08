@@ -1,0 +1,26 @@
+datasource db {
+    provider = "mongodb"
+    url = "mongodb://root:root@localhost:27018/eq?authSource=admin"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Phonebook {
+    id          String @id @map("_id") @default(auto()) @db.ObjectId
+    number_id   String @unique
+    phone       String @unique
+    description String 
+    createdAt   DateTime
+    modifiedAt  DateTime?
+    createdBy   String?
+}
+
+model User {
+    id          String @id @map("_id") @default(auto()) @db.ObjectId
+    user_id String @unique
+    fio     String
+    login   String @unique
+    password String 
+}
