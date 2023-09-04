@@ -1,8 +1,7 @@
-import { updateData } from "../services";
+import { updateData } from "../../services/phonebook";
 
 import type { FastifyReply, FastifyRequest } from "fastify";
-import type { Phonebook } from "../services";
-import type { PrismaClient } from "@prisma/client";
+import type { Phonebook } from "../../services/phonebook";
 
 export async function updateController(
   request: FastifyRequest<{ Params: { id: Phonebook["number_id"] }; Body: Phonebook }>,

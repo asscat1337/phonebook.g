@@ -19,8 +19,10 @@ model Phonebook {
 
 model User {
     id          String @id @map("_id") @default(auto()) @db.ObjectId
-    user_id String @unique
-    fio     String
-    login   String @unique
-    password String 
+    userId      String @unique
+    name        String @unique
+    login       String @unique
+    password    String 
+    createdAt   DateTime
+    modifiedAt  DateTime?
 }

@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { listData } from "../services";
+import { listData } from "../../services/phonebook";
 
-import type { Phonebook } from "../services";
+import type { Phonebook } from "../../services/phonebook";
 
 export async function listController(
   request: FastifyRequest,
