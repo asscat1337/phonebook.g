@@ -7,7 +7,7 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Phonebook {
+model phonebooks {
     id          String @id @map("_id") @default(auto()) @db.ObjectId
     number_id   String @unique
     phone       String @unique
@@ -17,7 +17,7 @@ model Phonebook {
     createdBy   String?
 }
 
-model User {
+model users {
     id          String @id @map("_id") @default(auto()) @db.ObjectId
     userId      String @unique
     name        String @unique

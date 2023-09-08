@@ -29,13 +29,16 @@ export async function createUser(
   return user;
 }
 
-export async function getUser(
+export async function getUserById(
   prisma: PrismaClient,
-  userId: UserType["userId"]
+  { userId, login }: Partial<{ userId: UserType["userId"]; login: UserType["login"] }>
 ): Promise<UserType | null> {
   return await prisma.user.findFirst({
     where: {
-      userId,
+      OR: {
+        userId,
+        login,
+      },
     },
   });
 }
@@ -44,7 +47,7 @@ export async function deleteUser(
   prisma: PrismaClient,
   userId: UserType["userId"]
 ): Promise<UserType | null> {
-  const findUser = await getUser(prisma, userId);
+  const findUser = await getUserById(prisma, { userId });
 
   if (!findUser) {
     return null;

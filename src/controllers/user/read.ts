@@ -1,4 +1,4 @@
-import { UserType, getUser } from "../../services/user";
+import { UserType, getUserById } from "../../services/user";
 import type { FastifyRequest, FastifyReply } from "fastify";
 
 export async function userReadController(
@@ -10,7 +10,7 @@ export async function userReadController(
 
     const { userId } = params;
 
-    const user = await getUser(prisma, userId);
+    const user = await getUserById(prisma, { userId });
 
     if (!user) {
       throw new Error(`User ${userId} not found`);
