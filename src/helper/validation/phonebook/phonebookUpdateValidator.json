@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "required": ["phone"],
+    "additionalProperties": false,
+    "properties":{
+        "phone":{
+            "type":"string",
+            "minLength":1
+        },
+        "description":{
+            "type": "string",
+            "minLength":1
+        }
+    }
+}

@@ -9,7 +9,7 @@ generator client {
 
 model phonebooks {
     id          String @id @map("_id") @default(auto()) @db.ObjectId
-    number_id   String @unique
+    numberId   String @unique
     phone       String @unique
     description String 
     createdAt   DateTime

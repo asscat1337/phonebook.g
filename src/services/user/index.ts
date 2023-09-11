@@ -1,4 +1,5 @@
 import type { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 import { randomUUID } from "crypto";
 
 export type UserType = {
@@ -18,9 +19,14 @@ export async function createUser(
   prisma: PrismaClient,
   payload: UserCreationType
 ): Promise<UserType> {
+  const salt = process.env.SALT ? +process.env.SALT : 10;
+  const generateHash = await bcrypt.genSalt(salt);
+
+  const generatePassword = await bcrypt.hash(payload.password, generateHash);
   const user = await prisma.user.create({
     data: {
       ...payload,
+      password: generatePassword,
       createdAt: new Date(),
       userId: randomUUID(),
     },

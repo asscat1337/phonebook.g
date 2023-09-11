@@ -1,18 +1,16 @@
-class HttpError extends Error {
-  code: number;
-  constructor(message: string, code: number) {
-    super(message);
+import { FastifyReply } from "fastify";
+import { HttpException, InternalServerError } from "./errors";
 
-    // this.code = ;
-    this.message = message;
-    this.code = code;
-  }
-}
+export function errorHandler(e: unknown, res: FastifyReply): FastifyReply {
+  const errors = e as HttpException;
 
-export class ConflictError extends HttpError {
-  constructor(message: string, code: number) {
-    super(message, code);
-    this.name = "ConflictError";
-    this.code = 409;
+  if (errors.status === undefined) {
+    throw new InternalServerError(errors.message);
   }
+
+  return res.status(errors.status).send({
+    type: errors.type,
+    message: errors.message,
+    status: errors.status,
+  });
 }
