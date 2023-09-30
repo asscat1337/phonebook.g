@@ -1,9 +1,9 @@
-import { Phonebook } from "@prisma/client";
+import type { Phonebook } from "../../services/phonebook";
 import { deleteData } from "../../services/phonebook";
 import type { FastifyRequest, FastifyReply } from "fastify";
 
 export async function deleteController(
-  request: FastifyRequest<{ Params: { id: Phonebook["number_id"] } }>,
+  request: FastifyRequest<{ Params: { id: Phonebook["numberId"] } }>,
   reply: FastifyReply
 ): Promise<FastifyReply> {
   try {

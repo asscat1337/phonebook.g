@@ -21,7 +21,7 @@ export async function phonebookRouter(fastify: FastifyInstance): Promise<void> {
     "/api/phonebooks/delete/:id",
     { schema: { params: phonebookParamValidator } },
     (
-      request: FastifyRequest<{ Params: { id: Phonebook["number_id"] } }>,
+      request: FastifyRequest<{ Params: { id: Phonebook["numberId"] } }>,
       reply: FastifyReply
     ) => deleteController(request, reply)
   );
@@ -35,7 +35,7 @@ export async function phonebookRouter(fastify: FastifyInstance): Promise<void> {
     { schema: { body: phonebookUpdateValidator, params: phonebookParamValidator } },
     (
       request: FastifyRequest<{
-        Params: { id: Phonebook["number_id"] };
+        Params: { id: Phonebook["numberId"] };
         Body: Phonebook;
       }>,
       reply: FastifyReply

@@ -4,7 +4,7 @@ import type { FastifyReply, FastifyRequest } from "fastify";
 import type { Phonebook } from "../../services/phonebook";
 
 export async function updateController(
-  request: FastifyRequest<{ Params: { id: Phonebook["number_id"] }; Body: Phonebook }>,
+  request: FastifyRequest<{ Params: { id: Phonebook["numberId"] }; Body: Phonebook }>,
   reply: FastifyReply
 ): Promise<Phonebook> {
   try {

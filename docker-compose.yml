@@ -14,7 +14,15 @@ services:
   nginx:
     container_name: nginx
     build: ./src/nginx
-    restart: always    
+    restart: always   
+  redisdb:
+    container_name: redis
+    build: ./src/redis
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/data 
   server:
     container_name: server
     build: .
@@ -22,5 +30,8 @@ services:
     depends_on:
       - mongodb-phonebook
       - nginx
+      - redis
     ports:
       - "3000:3000"
+volumes:
+  redis:      

@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { randomUUID } from "crypto";
 
 export type Phonebook = {
-  number_id: string;
+  numberId: string;
   phone: string;
   description: string;
   createdAt: Date;
@@ -14,10 +14,10 @@ export async function create(
   prisma: PrismaClient,
   payload: Phonebook
 ): Promise<Phonebook> {
-  const data = await prisma.phonebook.create({
+  const data = await prisma.phonebooks.create({
     data: {
       ...payload,
-      number_id: randomUUID(),
+      numberId: randomUUID(),
       createdAt: new Date(),
     },
   });
@@ -27,11 +27,11 @@ export async function create(
 
 export async function deleteData(
   prisma: PrismaClient,
-  payload: Phonebook["number_id"]
+  payload: Phonebook["numberId"]
 ): Promise<Phonebook | null> {
-  const data = await prisma.phonebook.delete({
+  const data = await prisma.phonebooks.delete({
     where: {
-      number_id: payload,
+      numberId: payload,
     },
   });
   if (!data) return null;
@@ -40,7 +40,7 @@ export async function deleteData(
 }
 
 export async function listData(prisma: PrismaClient): Promise<Phonebook[] | null> {
-  const data = await prisma.phonebook.findMany();
+  const data = await prisma.phonebooks.findMany();
 
   if (!data) return null;
 
@@ -50,11 +50,11 @@ export async function listData(prisma: PrismaClient): Promise<Phonebook[] | null
 export async function updateData(
   prisma: PrismaClient,
   payload: Phonebook,
-  numberId: Phonebook["number_id"]
+  numberId: Phonebook["numberId"]
 ): Promise<Phonebook | null> {
-  const data = await prisma.phonebook.update({
+  const data = await prisma.phonebooks.update({
     where: {
-      number_id: numberId,
+      numberId: numberId,
     },
     data: {
       ...payload,

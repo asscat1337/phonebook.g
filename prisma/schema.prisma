@@ -22,7 +22,13 @@ model users {
     userId      String @unique
     name        String @unique
     login       String @unique
+    role        Role
     password    String 
     createdAt   DateTime
     modifiedAt  DateTime?
+}
+
+enum Role {
+    reader
+    admin
 }

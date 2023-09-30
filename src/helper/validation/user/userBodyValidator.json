@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "required": ["name","login","password"],
+    "required": ["name","login","password","role"],
     "additionalProperties": false,
     "properties":{
         "userId":{
@@ -14,6 +14,11 @@
         "login":{
             "type": "string",
             "minLength":1
+        },
+        "role":{
+            "type": "string",
+            "enum": ["reader","admin"],
+            "minLength": 1
         },
         "password":{
             "type": "string",

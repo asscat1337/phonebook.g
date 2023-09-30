@@ -29,3 +29,15 @@ export class InternalServerError extends HttpException {
     super(500, message, "InternalServerError");
   }
 }
+
+export class UnAuthorizeError extends HttpException {
+  constructor(message: string) {
+    super(401, message, "UnAuthorizeError");
+  }
+}
+
+export class NotFoundError extends HttpException {
+  constructor(message: string) {
+    super(404, message, "NotFoundError");
+  }
+}
