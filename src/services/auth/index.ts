@@ -11,7 +11,6 @@ export type Login = {
 };
 
 export type LoginResponse = {
-  refreshToken: string;
   accessToken: string;
   userId: string;
   username: string;
@@ -19,18 +18,17 @@ export type LoginResponse = {
 };
 
 export async function loginService(userData: UserType): Promise<LoginResponse> {
-  const accessToken = await createAccessToken({
+  const accessToken = createAccessToken({
     userId: userData.userId,
     role: userData.role,
   });
-  const refreshToken = createRefreshToken({
+  await createRefreshToken({
     userId: userData.userId,
     role: userData.role,
   });
 
   return {
     accessToken,
-    refreshToken,
     userId: userData.userId,
     username: userData.login,
     role: userData.role,

@@ -29,8 +29,11 @@ export async function loginUserController(
 
     const userData = await loginService(user);
 
+    reply.setCookie("accessToken", userData.accessToken);
+
     return reply.status(200).send(userData);
   } catch (e) {
+    console.log(e);
     return errorHandler(e, reply);
   }
 }
