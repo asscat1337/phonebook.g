@@ -21,7 +21,6 @@ async function roleBasedAccesControl(
       }
     }
   } catch (e) {
-    console.log(e);
     return errorHandler(e, reply);
   }
 }
